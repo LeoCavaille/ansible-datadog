@@ -2,4 +2,9 @@
 
 [Main]
 
+# These variables must be defined in the template
+dd_url: {{ datadog_url | default('https://app.datadoghq.com') }}
+api_key: {{ datadog_api_key | mandatory }}
+
+# These variables are free-style, passed through a hash
 {{ datadog_config | to_nice_yaml }}
