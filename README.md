@@ -18,7 +18,6 @@ Role Variables
 - `datadog_api_key` - Your Datadog API key.
 - `datadog_checks` - YAML configuration for agent checks to drop into `/etc/dd-agent/conf.d`.
 - `datadog_config` - Settings to place in `/etc/dd-agent/datadog.conf`.
-- `datadog_process_checks` - Array of process checks and options.
 
 Dependencies
 ------------
@@ -37,14 +36,6 @@ Example Playbooks
       dd_url: "{{ datadog_url }}"
       use_mount: "{{ datadog_use_mount }}"
       tags: "mytag0, mytag1"
-    datadog_process_checks:
-      - name: ssh
-        search_string: ['ssh', 'sshd' ]
-      - name: syslog
-        search_string: ['rsyslog' ]
-        cpu_check_interval: '0.2'
-        exact_match: true
-        ignore_denied_access: true
     datadog_checks:
       ssh_check:
         init_config:
